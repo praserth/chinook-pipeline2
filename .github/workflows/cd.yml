@@ -23,7 +23,7 @@ jobs:
             EOF 
       - name: Deploy piepline to databricks
         run: |
-            databricks workspace import "pipeline.py" "/Workspace/Users/praserth@ais.co.th/prod/pipeline" --language python --overwrite
+            databricks workspace import "pipeline_USD_to_THB.py" "/Workspace/Users/praserth@ais.co.th/prod/pipeline_USD_to_THB" --language python --overwrite
       - name: Run test job
         run: |
             databricks jobs run-now --job-id 707316038040409
