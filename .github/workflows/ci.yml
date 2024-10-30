@@ -26,7 +26,7 @@ jobs:
             databricks workspace import "pipeline_USD_to_THB.py" "/Workspace/Users/praserth@ais.co.th/test/pipeline_USD_to_THB" --language python --overwrite
       - name: Deploy test to databricks
         run: |
-            databricks workspace import  "test_USD_to_THB.py" "/Workspace/Users/praserth@ais.co.th/test/test_USD_to_THB" --language python --overwrite
-      - name: Run test job
-        run: |
-            databricks jobs run-now --job-id 1059131255950731
+      #       databricks workspace import  "test_USD_to_THB.py" "/Workspace/Users/praserth@ais.co.th/test/test_USD_to_THB" --language python --overwrite
+      # - name: Run test job
+      #   run: |
+      #       databricks jobs run-now --job-id 1059131255950731
