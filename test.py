@@ -1,12 +1,20 @@
 # Databricks notebook source
 import pandas as pd
+import configparser
+import os
 from datetime import datetime
 
-# file path
-wsPath = '/Workspace/Users/praserth@ais.co.th'
-inputPath = f"{wsPath}/track_small.csv"
-outputPath = f"{wsPath}/output_small.csv"
-testResultPath = f"{wsPath}/test_result.txt"
+# Get the parent path of the notebook
+notebook_path = dbutils.entry_point.getDbutils().notebook().getContext().notebookPath().get()
+parent_path = os.path.dirname('/Workspace' + notebook_path)
+os.chdir(parent_path)
+
+# read config file
+config = configparser.ConfigParser()
+config.read('./pipeline.conf')
+inputPath = config.get('DEFAULT', 'INPUT_PATH')
+outputPath = config.get('DEFAULT', 'OUTPUT_PATH')
+testResultPath = config.get('DEFAULT', 'TEST_RESULT_PATH')
 
 # read files
 tracksInput = pd.read_csv(inputPath)
@@ -27,7 +35,6 @@ else:
 
 # Case 2
 mergedTracks = pd.merge(tracksInput, tracksOutput, on='TrackId', suffixes=('_input', '_output'))
-# mergedTracks.display()
 if (mergedTracks['UnitPrice_output'] - mergedTracks['UnitPrice_input'] < 1).all():
     f.write("Case 2: Pass\n")
 else:
