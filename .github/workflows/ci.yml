@@ -12,7 +12,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: 3.9
-      - name: Databricks CLI config
+      - name: Databricks CLI  config
         run: |
             pip install databricks-cli
             cat > ~/.databrickscfg << EOF
