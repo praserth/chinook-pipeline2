@@ -5,7 +5,7 @@ import os
 import configparser
 
 # Get the parent path of the notebook
-notebook_path = dbutils.entry_point.getDbutils().notebook().getContext().notebookPath().get()
+notebook_path = dbutils.entry_point.getDbutils().notebook().getContext().notebookPath().get() 
 parent_path = os.path.dirname('/Workspace' + notebook_path)
 os.chdir(parent_path)
 
