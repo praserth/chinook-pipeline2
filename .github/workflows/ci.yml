@@ -20,7 +20,7 @@ jobs:
             host = ${{ secrets.DATABRICKS_HOST_URL }}
             token = ${{ secrets.DATABRICKS_TOKEN }}
             jobs-api-version = 2.1
-            EOF 
+            EOF
       - name: Deploy piepline to databricks
         run: |
             databricks workspace import "pipeline_USD_to_THB.py" "/Workspace/Users/praserth@ais.co.th/test/pipeline_USD_to_THB" --language python --overwrite
